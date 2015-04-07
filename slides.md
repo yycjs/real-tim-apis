@@ -1,4 +1,4 @@
-title: YYCjs Slides
+title: Real-Time APIs with Node
 output: index.html
 theme: theme
 controls: false
@@ -6,17 +6,51 @@ logo: theme/logo.png
 
 --
 
-# YYC.js Presents
+# Real-Time APIs with Node
 
-## An Epic Slide Template
+--
 
-### That totally kicks some ass
+# Real-Time push vs. pull
 
-#### Kind of like Chuck Norris
+* Something awesome
+* More awesomeness
 
-##### And Jackie Chan
+--
+## NodeJS
 
-Maybe even Chris Rock
+[Node.js](http://nodejs.org/) is a platform built on Chrome's V8 JavaScript runtime for easily building fast, scalable network applications.
+
+![NodeJS logo](images/nodejs.png)
+
+* HTTP/HTTPS
+* TCP/UDP Sockets
+* Event Emitters
+* Streams
+* Files System Access
+* Cross Platform
+
+-- image
+
+## How is Node Different?
+
+It uses JavaScript and it has a single threaded event loop. There is a seperate thread pool for IO requests. (Image credited to [Elegant Code](http://elegantcode.com/2011/07/05/taking-baby-steps-with-node-js-dont-block-the-event-loop/))
+
+![Event Loop](img/event-loop.png)
+
+---
+
+## Modules
+
+### The [__N__ode __P__ackage __M__anager](https://npmjs.org)
+
+- currently hosts ~ 28000 modules
+- easy to use (`npm install <package>`)
+- easy to publish (`npm publish`)
+- use it with anything (folders, tarballs, git repositories)
+
+### [CommonJS](http://www.commonjs.org/)
+
+- Attempt for JavaScript API standardization
 
 --
 
@@ -30,39 +64,3 @@ Maybe even Chris Rock
 
 * [<i class="fa fa-github"></i> daffl](https://github.com/daffl)
 * [<i class="fa fa-twitter"></i> @daffl](http://twitter.com/daffl)
-
--- presenter
-
-![Eric Kryski](http://gravatar.com/avatar/23aba778a7daae99348aeb0728cf4aec?s=200)
-
-## Eric Kryski
-
-* [<i class="fa fa-github"></i> ekryski](https://github.com/ekryski)
-* [<i class="fa fa-twitter"></i> @ekryski](http://twitter.com/ekryski)
-* [<i class="fa fa-home"></i> erickryski.com](http://erickryski.com)
-
--- sponsors
-
-# Our Sponsors
-
-![Assembly](img/sponsors/assembly_logo.png)
-
-![Village Brewery](img/sponsors/village_brewery_logo.png)
-
-![Startup Calgary](img/sponsors/startup_calgary_logo.png)
-
-![PetroFeed](img/sponsors/petrofeed_logo.png)
-
---
-
-# Last Month
-
-* Something awesome
-* More awesomeness
-
---
-
-# Next Month
-
-* Something awesome
-* More awesomeness

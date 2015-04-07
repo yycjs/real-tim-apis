@@ -1,6 +1,6 @@
 {
-  "name": "slide-template",
-  "description": "The YYCJS slide template",
+  "name": "real-time-apis",
+  "description": "Real time APIs with Node",
   "version": "0.3.1",
   "private": true,
   "homepage": "http://yycjs.com",
