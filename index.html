@@ -564,17 +564,19 @@ ul {
 </section>
   </div>
   <div class="slide hidden" id="slide-2">
-    <section class="slide-content"><h1 id="real-time-push-vs-pull">Real-Time push vs. pull</h1>
-<ul>
-<li>Something awesome</li>
-<li>More awesomeness</li>
-</ul>
+    <section class="slide-content"><h2 id="real-time-push-vs-pull">Real-Time push vs. pull</h2>
+<h3 id="pull">Pull</h3>
+<p>Make HTTP (AJAX) requests periodically to see if something has changed.</p>
+<h3 id="push">Push</h3>
+<p>Send and receive messages between a webserver.</p>
+<h4 id="__-websockets-http-en-wikipedia-org-wiki-websocket-__"><strong><a href="http://en.wikipedia.org/wiki/WebSocket">Websockets</a></strong></h4>
+<p>WebSocket is a protocol providing full-duplex communications channels over a single TCP connection designed to be implemented in web browsers and web servers</p>
 </section>
   </div>
   <div class="slide hidden" id="slide-3">
-    <section class="slide-content"><h2 id="nodejs">NodeJS</h2>
+    <section class="slide-content"><h2 style="text-align: center;"><img src="img/nodejs.png" style="width: 400px;" alt="NodeJS logo"></h2>
+
 <p><a href="http://nodejs.org/">Node.js</a> is a platform built on Chrome&#39;s V8 JavaScript runtime for easily building fast, scalable network applications.</p>
-<p><img src="images/nodejs.png" alt="NodeJS logo"></p>
 <ul>
 <li>HTTP/HTTPS</li>
 <li>TCP/UDP Sockets</li>
@@ -587,30 +589,88 @@ ul {
   </div>
   <div class="slide hidden  image" id="slide-4">
     <section class="slide-content"><h2 id="how-is-node-different-">How is Node Different?</h2>
-<p>It uses JavaScript and it has a single threaded event loop. There is a seperate thread pool for IO requests. (Image credited to <a href="http://elegantcode.com/2011/07/05/taking-baby-steps-with-node-js-dont-block-the-event-loop/">Elegant Code</a>)</p>
+<p>It uses JavaScript in a single threaded event loop. There is a separate thread pool for IO requests. (Image credited to <a href="http://elegantcode.com/2011/07/05/taking-baby-steps-with-node-js-dont-block-the-event-loop/">Elegant Code</a>)</p>
 <p><img src="img/event-loop.png" alt="Event Loop"></p>
 </section>
   </div>
-  <div class="slide hidden -" id="slide-5">
+  <div class="slide hidden" id="slide-5">
+    <section class="slide-content"><h2 id="javascript-is-asynchronous">JavaScript is asynchronous</h2>
+<pre><code class="lang-javascript">$.ajax(<span class="string">'/polls'</span>, {
+  success(data) {
+     console.log(<span class="string">'Got data'</span>, data);
+  },
+  error() {
+     console.log(<span class="string">'Error fetching data'</span>)
+  }
+});</code></pre>
+<p>In Node:</p>
+<pre><code class="lang-javascript">request(<span class="string">'/polls'</span>, <span class="keyword">function</span>(error, response, data) {
+  <span class="keyword">if</span>(error) {
+    console.log(<span class="string">'Error fetching data'</span>)
+  } <span class="keyword">else</span> {
+    console.log(<span class="string">'Got data'</span>, data);
+  }
+});</code></pre>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-6">
     <section class="slide-content"><h2 id="modules">Modules</h2>
 <h3 id="the-__n__ode-__p__ackage-__m__anager-https-npmjs-org-">The <a href="https://npmjs.org"><strong>N</strong>ode <strong>P</strong>ackage <strong>M</strong>anager</a></h3>
 <ul>
-<li>currently hosts ~ 28000 modules</li>
+<li>currently hosts ~ 150000 modules</li>
 <li>easy to use (<code>npm install &lt;package&gt;</code>)</li>
 <li>easy to publish (<code>npm publish</code>)</li>
 <li>use it with anything (folders, tarballs, git repositories)</li>
 </ul>
-<h3 id="-commonjs-http-www-commonjs-org-"><a href="http://www.commonjs.org/">CommonJS</a></h3>
-<ul>
-<li>Attempt for JavaScript API standardization</li>
-</ul>
 </section>
   </div>
-  <div class="slide hidden" id="slide-6">
+  <div class="slide hidden" id="slide-7">
+    <section class="slide-content"><h2 id="express-feathers">Express + Feathers</h2>
+<h3 id="express">Express</h3>
+<p>Fast, unopinionated, minimalist web framework for Node.js</p>
+<pre><code class="lang-javascript">import express from <span class="string">'express'</span>;
+
+<span class="keyword">const</span> app = express()
+  .use(<span class="string">'/'</span>, express.static(__dirname));
+
+app.listen(<span class="number">3000</span>);</code></pre>
+<h3 id="feathers">Feathers</h3>
+<p>A microservice library on top of Express that can expose services
+and their events via REST and Websockets.</p>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-8">
+    <section class="slide-content"><h2 id="a-feathers-application">A Feathers application</h2>
+<pre><code class="lang-javascript">import feathers from <span class="string">'feathers'</span>;
+
+<span class="keyword">var</span> myService = {
+  find(params, callback) {},
+  get(id, params, callback) {},
+  create(data, params, callback) {},
+  update(id, data, params, callback) {},
+  patch(id, data, params, callback) {},
+  remove(id, params, callback) {},
+  setup(app, path) {}
+}
+
+<span class="keyword">const</span> app = feathers()
+  .configure(feathers.rest())
+  .configure(feathers.socketio())
+  .use(<span class="string">'/todos'</span>, myService)
+  .use(<span class="string">'/'</span>, express.static(__dirname));
+
+app.listen(<span class="number">3000</span>);</code></pre>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-9">
+    <section class="slide-content"><h2 id="real-time-proxy">Real-time Proxy</h2>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-10">
     <section class="slide-content"><h1 id="brought-to-you-by">Brought to you by</h1>
 </section>
   </div>
-  <div class="slide hidden  presenter" id="slide-7">
+  <div class="slide hidden  presenter" id="slide-11">
     <section class="slide-content"><p><img src="http://gravatar.com/avatar/a14850281f19396480bdba4aab2d52ef?s=200" alt="David Luecke"></p>
 <h2 id="david-luecke">David Luecke</h2>
 <ul>
