@@ -8,6 +8,10 @@ logo: theme/logo.png
 
 # Real-Time APIs with Node
 
+--image
+
+![Come to the dark side](img/darkside.jpg)
+
 --
 
 ## Real-Time push vs. pull
