@@ -111,22 +111,23 @@ and their events via REST and Websockets.
 ```javascript
 import feathers from 'feathers';
 
-const myService = {
-  find(params, callback) {},
-  get(id, params, callback) {},
-  create(data, params, callback) {},
-  update(id, data, params, callback) {},
-  patch(id, data, params, callback) {},
-  remove(id, params, callback) {},
-  setup(app, path) {}
-}
-
 const app = feathers()
   .configure(feathers.rest())
   .configure(feathers.socketio())
-  .use('/todos', myService)
-  .use('/', express.static(__dirname));
-
+  .use('/todos', {
+    // GET /todos | socket.emit('todos::find')
+    find(params, callback) {},
+    // GET /todos/:id | socket.emit('todos::get')
+    get(id, params, callback) {},
+    // POST /todos | socket.emit('todos::create')
+    create(data, params, callback) {},
+    // PUT /todos/:id | socket.emit('todos::update')
+    update(id, data, params, callback) {},
+    // PATCH /todos/:id | socket.emit('todos::patch')
+    patch(id, data, params, callback) {},
+    // DELETE /todos/:id | socket.emit('todos::remove')
+    remove(id, params, callback) {}
+  }).use('/', express.static(__dirname));
 app.listen(3000);
 ```
 

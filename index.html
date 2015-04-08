@@ -647,22 +647,23 @@ and their events via REST and Websockets.</p>
     <section class="slide-content"><h2 id="a-feathers-application">A Feathers application</h2>
 <pre><code class="lang-javascript">import feathers from <span class="string">'feathers'</span>;
 
-<span class="keyword">const</span> myService = {
-  find(params, callback) {},
-  get(id, params, callback) {},
-  create(data, params, callback) {},
-  update(id, data, params, callback) {},
-  patch(id, data, params, callback) {},
-  remove(id, params, callback) {},
-  setup(app, path) {}
-}
-
 <span class="keyword">const</span> app = feathers()
   .configure(feathers.rest())
   .configure(feathers.socketio())
-  .use(<span class="string">'/todos'</span>, myService)
-  .use(<span class="string">'/'</span>, express.static(__dirname));
-
+  .use(<span class="string">'/todos'</span>, {
+    <span class="comment">// GET /todos | socket.emit('todos::find')</span>
+    find(params, callback) {},
+    <span class="comment">// GET /todos/:id | socket.emit('todos::get')</span>
+    get(id, params, callback) {},
+    <span class="comment">// POST /todos | socket.emit('todos::create')</span>
+    create(data, params, callback) {},
+    <span class="comment">// PUT /todos/:id | socket.emit('todos::update')</span>
+    update(id, data, params, callback) {},
+    <span class="comment">// PATCH /todos/:id | socket.emit('todos::patch')</span>
+    patch(id, data, params, callback) {},
+    <span class="comment">// DELETE /todos/:id | socket.emit('todos::remove')</span>
+    remove(id, params, callback) {}
+  }).use(<span class="string">'/'</span>, express.static(__dirname));
 app.listen(<span class="number">3000</span>);</code></pre>
 </section>
   </div>
