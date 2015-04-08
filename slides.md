@@ -111,7 +111,7 @@ and their events via REST and Websockets.
 ```javascript
 import feathers from 'feathers';
 
-var myService = {
+const myService = {
   find(params, callback) {},
   get(id, params, callback) {},
   create(data, params, callback) {},
@@ -133,6 +133,9 @@ app.listen(3000);
 --
 
 ## Real-time Proxy
+
+
+<img alt="Real-time Proxy" src="img/real-time proxy.png" style="width: 80%;">
 
 --
 

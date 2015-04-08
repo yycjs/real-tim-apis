@@ -552,6 +552,10 @@ ul {
   display: table-cell;
 }
 
+pre {
+  font-size: 80%;
+}
+
   </style>
 </head>
 <body>
@@ -643,7 +647,7 @@ and their events via REST and Websockets.</p>
     <section class="slide-content"><h2 id="a-feathers-application">A Feathers application</h2>
 <pre><code class="lang-javascript">import feathers from <span class="string">'feathers'</span>;
 
-<span class="keyword">var</span> myService = {
+<span class="keyword">const</span> myService = {
   find(params, callback) {},
   get(id, params, callback) {},
   create(data, params, callback) {},
@@ -664,6 +668,7 @@ app.listen(<span class="number">3000</span>);</code></pre>
   </div>
   <div class="slide hidden" id="slide-9">
     <section class="slide-content"><h2 id="real-time-proxy">Real-time Proxy</h2>
+<p><img alt="Real-time Proxy" src="img/real-time proxy.png" style="width: 80%;"></p>
 </section>
   </div>
   <div class="slide hidden" id="slide-10">

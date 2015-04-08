@@ -155,3 +155,7 @@ ul {
   margin: 20px auto;
   display: table-cell;
 }
+
+pre {
+  font-size: 80%;
+}
