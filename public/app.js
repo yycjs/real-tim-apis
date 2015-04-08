@@ -5,7 +5,7 @@ const socket = io.connect();
 
 function updatePoll() {
   $('.upvote').hide();
-  socket.emit('polls::get', 1, {}, (error, poll) => {
+  socket.emit('polls::get', 2, {}, (error, poll) => {
     let choices = _.sortBy(poll.choices, 'votes').reverse();
     let list = $('<ul class="list-group">');
     choices.forEach(choice => {
